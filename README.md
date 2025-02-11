@@ -26,18 +26,25 @@ $ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --boo
 
 spring.application.name=helloworld
 
+spring.kafka.topic.name=test
+spring.kafka.topic.name.json=json
+
+
+
 # Config for consumer
 spring.kafka.consumer.bootstrap-servers=localhost:9092
 spring.kafka.consumer.group-id=mygroup
 # --from-beginning consume all data from producer even though it started mid
 spring.kafka.consumer.auto-offset-reset=earliest   
 spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+# spring.kafka.consumer.value-deserializer:org.apache.kafka.common.serialization.StringDeserializer
 spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.JsonDeserializer
 spring.kafka.consumer.properties.spring.json.trusted.packages=*
 
 # Config for producer
 spring.kafka.producer.bootstrap-servers=localhost:9092
 spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+# spring.kafka.producer.value-deserializer:org.apache.kafka.common.serialization.StringSerializer
 spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer
 
 
